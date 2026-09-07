@@ -52,8 +52,8 @@ public class AccountController {
     * Called by Transaction Service when transfer is initiated.
      */
 
-    @PutMapping("/{accountNumber}deduct")
-    public ResponseEntity<String> deductBalace(
+    @PutMapping("/{accountNumber}/deduct")
+    public ResponseEntity<String> deductBalance(
             @PathVariable String accountNumber,
             @RequestParam BigDecimal amount){
         accountService.deductBalance(accountNumber,amount);
