@@ -22,7 +22,7 @@ public class AccountEventConsumer {
    */
 
    @KafkaListener(topics = "transaction.completed")
-   public void consumeTransactionComplted(@Payload Map<String,Object> payload) {
+   public void consumeTransactionCompleted(@Payload Map<String,Object> payload) {
 
      try{
       String receiverAccount =(String) payload.get("receiverAccountNumber");
