@@ -20,7 +20,7 @@ spring:
     kafka:
       bootstrap-server: localhost:9092
       consumer:
-        group-id: account-service-group
+        group-id: transaction-service-group
         auto-offset-reset: earliest
         key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
         value-deserialized: org.springframework.kafka.support.serializer.jsonDeserializer

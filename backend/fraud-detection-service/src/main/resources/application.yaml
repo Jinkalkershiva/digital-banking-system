@@ -9,7 +9,7 @@ spring:
   kafka:
     bootstrap-server: localhost:9092
     consumer:
-      group-id: account-service-group
+      group-id: fraud-service-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserialized: org.springframework.kafka.support.serializer.jsonDeserializer
@@ -36,7 +36,7 @@ server:
 
 account:
   service:
-    url: http:// localhost:8081
+    url: http://localhost:8081
 
 fraud:
   max-transaction-per-minute: 5

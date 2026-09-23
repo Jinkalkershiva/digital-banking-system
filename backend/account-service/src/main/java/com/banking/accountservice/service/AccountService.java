@@ -171,27 +171,4 @@ public class AccountService {
 
 
 
-
-
-
-
-//    public @Nullable AccountResponse getAccount(String accountNumber) {
-//
-//    }
-//
-//    public @Nullable AccountResponse getBalance(String accountNumber) {
-//
-//    }
-//
-//    public void blockAccount(String accountNumber) {
-//
-//    }
-//
-//    public void deductBalance(String accountNumber, BigDecimal amount) {
-//
-//    }
-//
-//    public void creditBalance(String accountNumber, BigDecimal amount) {
-//
-//    }
 }
