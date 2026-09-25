@@ -6,7 +6,7 @@ export default function Sidebar({ isAdmin }) {
     return (
       <aside className="sidebar">
         <div className="sidebar-header" style={{ backgroundColor: '#1e293b' }}>
-          <span style={{ color: '#38bdf8' }}>👑 ADMIN CONTROL</span>
+          <span style={{ color: '#38bdf8', fontWeight: 800 }}>👑 DGBASE ADMIN</span>
         </div>
 
         <nav className="sidebar-menu">
@@ -74,10 +74,19 @@ export default function Sidebar({ isAdmin }) {
             <span style={{ marginRight: '0.5rem' }}>🖥️</span>
             <span className="link-label">System Topology</span>
           </NavLink>
+
+          <NavLink
+            to="/showcase"
+            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            style={{ marginTop: '0.75rem', borderTop: '1px solid #334155', paddingTop: '0.75rem' }}
+          >
+            <span style={{ marginRight: '0.5rem' }}>🚀</span>
+            <span className="link-label" style={{ color: '#38bdf8' }}>Showcase Landing</span>
+          </NavLink>
         </nav>
 
         <div className="sidebar-footer">
-          <p style={{ color: '#38bdf8' }}>Apex Admin Portal</p>
+          <p style={{ color: '#38bdf8', fontWeight: 700 }}>DGBASE Admin Portal</p>
           <p style={{ marginTop: '0.2rem', color: '#64748b' }}>Role: ROLE_ADMIN</p>
         </div>
       </aside>
@@ -87,7 +96,7 @@ export default function Sidebar({ isAdmin }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <span>ONLINE BANKING</span>
+        <span style={{ fontWeight: 800, letterSpacing: '-0.02em' }}>DGBASE BANKING</span>
       </div>
 
       <nav className="sidebar-menu">
@@ -165,10 +174,19 @@ export default function Sidebar({ isAdmin }) {
           </svg>
           <span className="link-label">Security Alerts</span>
         </NavLink>
+
+        <NavLink
+          to="/showcase"
+          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          style={{ marginTop: '0.75rem', borderTop: '1px solid var(--border-color)', paddingTop: '0.75rem' }}
+        >
+          <span style={{ marginRight: '0.5rem' }}>🚀</span>
+          <span className="link-label" style={{ color: 'var(--accent)' }}>Showcase Landing</span>
+        </NavLink>
       </nav>
 
       <div className="sidebar-footer">
-        <p>Apex Core v1.0</p>
+        <p style={{ fontWeight: 700 }}>DGBASE Core v1.0</p>
         <p style={{ marginTop: '0.2rem', color: '#475569' }}>Microservices Engine</p>
       </div>
     </aside>

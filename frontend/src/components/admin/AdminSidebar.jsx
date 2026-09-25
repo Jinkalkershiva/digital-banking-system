@@ -29,7 +29,7 @@ export default function AdminSidebar() {
         <span style={{ fontSize: '1.25rem' }}>👑</span>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span style={{ color: '#ffffff', fontWeight: 800, fontSize: '0.95rem', letterSpacing: '-0.02em' }}>
-            Apex Digital Bank
+            DGBASE Banking
           </span>
           <span style={{ color: '#38bdf8', fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             ADMINISTRATION
@@ -64,6 +64,27 @@ export default function AdminSidebar() {
             </span>
           </NavLink>
         ))}
+
+        <NavLink
+          to="/showcase"
+          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            padding: '0.75rem 1rem',
+            borderRadius: '10px',
+            margin: '0.75rem 0 0.25rem 0',
+            color: '#38bdf8',
+            borderTop: '1px solid #1e293b',
+            textDecoration: 'none',
+          }}
+        >
+          <span style={{ fontSize: '1.1rem' }}>🚀</span>
+          <span className="link-label" style={{ fontSize: '0.875rem', fontWeight: 600 }}>
+            Showcase Landing
+          </span>
+        </NavLink>
       </nav>
 
       <div
@@ -76,7 +97,7 @@ export default function AdminSidebar() {
           backgroundColor: '#090d16',
         }}
       >
-        <p style={{ margin: 0, color: '#38bdf8', fontWeight: 700 }}>Apex Digital Bank ADMIN</p>
+        <p style={{ margin: 0, color: '#38bdf8', fontWeight: 700 }}>DGBASE Admin Portal</p>
         <p style={{ margin: '0.2rem 0 0 0' }}>SAGA & Microservices Core</p>
       </div>
     </aside>

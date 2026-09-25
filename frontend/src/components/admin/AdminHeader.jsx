@@ -40,9 +40,24 @@ export default function AdminHeader({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <span style={{ fontSize: '1.3rem' }}>👑</span>
+          <div
+            style={{
+              width: '28px',
+              height: '28px',
+              borderRadius: '7px',
+              background: 'linear-gradient(135deg, #2563eb 0%, #06b6d4 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2">
+              <rect x="2" y="5" width="20" height="14" rx="3" />
+              <line x1="2" y1="10" x2="22" y2="10" />
+            </svg>
+          </div>
           <span style={{ fontWeight: 800, letterSpacing: '-0.02em', fontSize: '1.05rem', color: '#f8fafc' }}>
-            Apex Digital Bank <span style={{ color: '#38bdf8', fontSize: '0.85rem', fontWeight: 700, padding: '0.2rem 0.5rem', background: 'rgba(56, 189, 248, 0.15)', borderRadius: '6px' }}>ADMIN</span>
+            DGBASE <span style={{ color: '#38bdf8', fontSize: '0.8rem', fontWeight: 700, padding: '0.15rem 0.5rem', background: 'rgba(56, 189, 248, 0.15)', borderRadius: '6px' }}>ADMIN</span>
           </span>
           <span style={{ color: 'rgba(255, 255, 255, 0.4)', margin: '0 0.25rem' }}>•</span>
           <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Identity Store:</span>

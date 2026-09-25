@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar({ currentAccount, onLogout }) {
   const isAdmin = currentAccount?.isAdmin || currentAccount?.role === 'ROLE_ADMIN' || currentAccount?.role === 'ADMIN';
@@ -6,11 +7,26 @@ export default function Navbar({ currentAccount, onLogout }) {
   return (
     <header className="navbar">
       <div className="nav-left">
-        <div className="nav-title">
-          <svg className="bank-logo" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L2 7v2h20V7L12 2zm-8 7h2v11H4V9zm6 0h2v11h-2V9zm6 0h2v11h-2V9zm4 0h2v11h-2V9zM2 20h20v2H2v-2z" />
-          </svg>
-          <span>Apex Digital Bank</span>
+        <Link to="/" className="nav-title" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }}>
+          <div
+            style={{
+              width: '32px',
+              height: '32px',
+              borderRadius: '8px',
+              background: 'linear-gradient(135deg, #2563eb 0%, #06b6d4 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '0.65rem',
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2">
+              <rect x="2" y="5" width="20" height="14" rx="3" />
+              <line x1="2" y1="10" x2="22" y2="10" />
+            </svg>
+          </div>
+          <span style={{ fontWeight: 800, fontSize: '1.15rem', letterSpacing: '-0.02em' }}>DGBASE</span>
+          <span style={{ fontSize: '0.7rem', color: '#64748b', marginLeft: '0.4rem', fontWeight: 600 }}>FINTECH</span>
           {isAdmin && (
             <span
               style={{
@@ -26,10 +42,27 @@ export default function Navbar({ currentAccount, onLogout }) {
               ADMIN
             </span>
           )}
-        </div>
+        </Link>
       </div>
 
       <div className="nav-right">
+        <Link
+          to="/showcase"
+          style={{
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            color: 'var(--accent)',
+            textDecoration: 'none',
+            padding: '0.35rem 0.75rem',
+            borderRadius: '6px',
+            background: 'var(--accent-subtle)',
+            marginRight: '0.5rem',
+          }}
+          title="View Engineering Showcase Landing Page"
+        >
+          🚀 Showcase
+        </Link>
+
         {currentAccount && (
           <div className="user-profile-badge">
             <div className="avatar-circle">

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 
+import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -68,6 +69,20 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public Showcase Landing Page Routes */}
+        <Route
+          path="/showcase"
+          element={<LandingPage currentAccount={currentAccount} onLogout={handleLogout} />}
+        />
+        <Route
+          path="/landing"
+          element={<LandingPage currentAccount={currentAccount} onLogout={handleLogout} />}
+        />
+        <Route
+          path="/about"
+          element={<LandingPage currentAccount={currentAccount} onLogout={handleLogout} />}
+        />
+
         {/* Public Auth Routes */}
         <Route
           path="/login"
@@ -90,6 +105,14 @@ export default function App() {
             )
           }
         />
+
+        {/* Unauthenticated Root: Landing Page Showcase */}
+        {!currentAccount && (
+          <Route
+            path="/"
+            element={<LandingPage currentAccount={null} onLogout={handleLogout} />}
+          />
+        )}
 
         {/* Authenticated Application Shell */}
         <Route
@@ -157,6 +180,10 @@ export default function App() {
                       <Routes>
                         <Route
                           path="/"
+                          element={<Dashboard currentAccount={currentAccount} />}
+                        />
+                        <Route
+                          path="/dashboard"
                           element={<Dashboard currentAccount={currentAccount} />}
                         />
                         <Route
