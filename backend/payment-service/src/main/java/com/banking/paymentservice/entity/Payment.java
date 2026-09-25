@@ -37,6 +37,12 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
 
+    private String refundStatus;
+
+    private String razorpayRefundId;
+
+    private String transactionId;
+
     private String description;
 
     private String failureReason;

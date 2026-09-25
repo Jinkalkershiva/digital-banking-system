@@ -7,12 +7,12 @@ spring:
       host: localhost
       port: 6379
   kafka:
-    bootstrap-server: localhost:9092
+    bootstrap-servers: localhost:9092
     consumer:
       group-id: fraud-service-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserialized: org.springframework.kafka.support.serializer.jsonDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring:
           json:
@@ -20,14 +20,14 @@ spring:
               packages: "*"
             use:
               type:
-                header: false
+                headers: false
             value:
               default:
                 type: java.util.HashMap
 
     producer:
-      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
-      value-deserialized: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 server:
   port: 8084

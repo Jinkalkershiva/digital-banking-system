@@ -16,23 +16,21 @@ public class FraudDetectionEventConsumer {
     private final FraudDetectionService fraudDetectionService;
 
     /**
-     * Listens to transaction.initiated topic
-     * Every transaction  goes through fraud check before completing
-     * @param payload
+     * Listens to transaction.initiated topic.
+     * Evaluates fraud rules and publishes either fraud.check.clean or verification.required.
+     *
+     * @param payload transaction event payload
      */
-    @KafkaListener(topics = "transaction.initiated",groupId = "fraud-detection-group")
-    public void consumerTransactionInitiated(
-            @Payload Map<String, Object> payload)
-    {
-        log.info("Recived transaction for fraud check: {}",
-                payload.get("transactionId"));
+    @KafkaListener(topics = "transaction.initiated", groupId = "fraud-service-group")
+    public void consumerTransactionInitiated(@Payload Map<String, Object> payload) {
+        log.info("[FRAUD] Received transaction.initiated event for fraud check: transactionId={}",
+                payload != null ? payload.get("transactionId") : "null");
 
-        try{
+        try {
             fraudDetectionService.checkTransaction(payload);
-        }
-        catch (Exception e){
-
+        } catch (Exception e) {
+            log.error("[FRAUD] Critical error during transaction fraud evaluation for transaction {}: {}",
+                    payload != null ? payload.get("transactionId") : "null", e.getMessage(), e);
         }
     }
-
 }

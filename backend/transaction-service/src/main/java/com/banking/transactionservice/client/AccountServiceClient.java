@@ -1,23 +1,28 @@
 package com.banking.transactionservice.client;
 
+import com.banking.transactionservice.dto.AccountResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 
-@FeignClient(name ="account-service", url= "${account.service.url}")
+@FeignClient(name = "account-service", url = "${account.service.url:http://localhost:8081}")
 public interface AccountServiceClient {
 
     @PutMapping("/api/v1/accounts/{accountNumber}/deduct")
     String deductBalance(
-            @PathVariable String accountNumber,
-            @RequestParam BigDecimal amount);
+            @PathVariable("accountNumber") String accountNumber,
+            @RequestParam("amount") BigDecimal amount);
 
     @PutMapping("/api/v1/accounts/{accountNumber}/credit")
     String creditBalance(
-            @PathVariable String accountNumber,
-            @RequestParam BigDecimal amount);
+            @PathVariable("accountNumber") String accountNumber,
+            @RequestParam("amount") BigDecimal amount);
 
+    @GetMapping("/api/v1/accounts/{accountNumber}")
+    AccountResponse getAccount(
+            @PathVariable("accountNumber") String accountNumber);
 }

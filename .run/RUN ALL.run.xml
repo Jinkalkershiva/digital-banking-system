@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RUN ALL" type="CompoundRunConfigurationType">
+    <toRun name="AccountServiceApplication" type="Application" />
+    <toRun name="ApiGatewayServiceApplication" type="Application" />
+    <toRun name="FraudDetectionServiceApplication" type="Application" />
+    <toRun name="NotificationServiceApplication" type="Application" />
+    <toRun name="PaymentServiceApplication" type="Application" />
+    <toRun name="SpringSecExApplication" type="Application" />
+    <toRun name="TransactionServiceApplication" type="Application" />
+    <method v="2" />
+  </configuration>
+</component>

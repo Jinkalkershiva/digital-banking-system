@@ -3,8 +3,8 @@ spring:
     name: payment-service
   datasource:
     url: jdbc:mysql://localhost:3306/payment_db?createDatabaseIfNotExist=true
-    username: root
-    password: ${DB_PASSWORD}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:shivaJ@123}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -14,20 +14,45 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
   kafka:
     bootstrap-servers: localhost:9092
+    consumer:
+      group-id: payment-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+            use:
+              type:
+                headers: false
+            value:
+              default:
+                type: java.util.HashMap
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+account:
+  service:
+    url: http://localhost:8081
 
 server:
   port: 8083
 
 #Razorpay configuration
 razorpay:
-  key-id: ${rzp_test_Tfa4gLXjcERhPt}
-  key-secret: ${fKf2Z6Hvwda9X4Pnb7KykeVL}
-  webhook-secret: ${RAZORPAY_WEBHOOK_SECRET}
+  key-id: rzp_test_Tfa4gLXjcERhPt
+  key-secret: fKf2Z6Hvwda9X4Pnb7KykeVL
+  webhook-secret: dummy_webhook_secret
 
 management:
   endpoints:

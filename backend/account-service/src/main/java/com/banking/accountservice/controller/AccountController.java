@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 
 @RestController
-@RequestMapping("api/v1/accounts")
+@RequestMapping("/api/v1/accounts")
 @Slf4j
 @RequiredArgsConstructor
 public class AccountController {
@@ -26,6 +26,16 @@ public class AccountController {
             @Valid @RequestBody CreateAccountRequest request ){
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(accountService.createAccount(request));
+    }
+
+    @GetMapping
+    public ResponseEntity<java.util.List<AccountResponse>> getAllAccounts() {
+        return ResponseEntity.ok(accountService.getAllAccounts());
+    }
+
+    @GetMapping("/user/{email}")
+    public ResponseEntity<AccountResponse> getAccountByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(accountService.getAccountByEmail(email));
     }
 
     @GetMapping("/{accountNumber}")
@@ -45,6 +55,13 @@ public class AccountController {
             @PathVariable String accountNumber){
         accountService.blockAccount(accountNumber);
         return ResponseEntity.ok("Account blocked Successfully");
+    }
+
+    @PutMapping("/{accountNumber}/unblock")
+    public ResponseEntity<String> unblockAccount(
+            @PathVariable String accountNumber){
+        accountService.unblockAccount(accountNumber);
+        return ResponseEntity.ok("Account unblocked Successfully");
     }
 
     /*

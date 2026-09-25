@@ -1,6 +1,5 @@
 package com.banking.transactionservice.controller;
 
-
 import com.banking.transactionservice.dto.TransactionResponse;
 import com.banking.transactionservice.dto.TransferRequest;
 import com.banking.transactionservice.service.TransactionService;
@@ -22,35 +21,55 @@ public class TransactionController {
     private final TransactionService transactionService;
 
     @PostMapping("/transfer")
-    public ResponseEntity<TransactionResponse>transfer(
+    public ResponseEntity<TransactionResponse> transfer(
             @Valid @RequestBody TransferRequest request
-    ){
+    ) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(transactionService.transfer(request));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TransactionResponse>> getAllTransactions() {
+        return ResponseEntity.ok(transactionService.getAllTransactions());
     }
 
     @GetMapping("/{transactionId}")
     public ResponseEntity<TransactionResponse> getTransaction(
             @PathVariable String transactionId
-    ){
+    ) {
         return ResponseEntity.ok(transactionService.getTransaction(transactionId));
     }
 
     @GetMapping("/account/{accountNumber}")
     public ResponseEntity<List<TransactionResponse>> getTransactionHistory(
             @PathVariable String accountNumber
-    ){
+    ) {
         return ResponseEntity.ok(transactionService.getTransactionHistory(accountNumber));
     }
 
     @PostMapping("/{transactionId}/verify")
-    public ResponseEntity<TransactionResponse>verifyOTP(
+    public ResponseEntity<TransactionResponse> verifyOTP(
             @PathVariable String transactionId,
             @RequestParam String otp
-    ){
-        log.info("OTP verification request -transaction: {}",transactionId);
-
-        return ResponseEntity.ok(transactionService.verifyOTP(transactionId,otp));
+    ) {
+        log.info("OTP verification request for transaction: {}", transactionId);
+        return ResponseEntity.ok(transactionService.verifyOTP(transactionId, otp));
     }
-    
+
+    @PostMapping("/{transactionId}/resend-otp")
+    public ResponseEntity<TransactionResponse> resendOTP(
+            @PathVariable String transactionId
+    ) {
+        log.info("Resend OTP request for transaction: {}", transactionId);
+        return ResponseEntity.ok(transactionService.resendOTP(transactionId));
+    }
+
+    @PostMapping("/{transactionId}/cancel")
+    public ResponseEntity<TransactionResponse> cancelTransaction(
+            @PathVariable String transactionId,
+            @RequestParam(value = "reason", required = false) String reason
+    ) {
+        log.info("Cancel request for transaction: {}", transactionId);
+        return ResponseEntity.ok(transactionService.cancelTransaction(transactionId, reason));
+    }
 }

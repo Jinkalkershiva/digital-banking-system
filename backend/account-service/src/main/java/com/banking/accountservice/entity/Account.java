@@ -11,11 +11,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Entity
 @Table(name ="account")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Account {
 
     @Id

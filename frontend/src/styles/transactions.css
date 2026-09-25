@@ -1,0 +1,163 @@
+/* Transactions List & Table Styles */
+
+.transactions-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.table-header-bar {
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.table-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-select {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-main);
+  font-size: 0.875rem;
+  color: var(--text-main);
+  outline: none;
+}
+
+/* Responsive Table */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.transactions-table th {
+  background-color: var(--bg-main);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.transactions-table td {
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.transactions-table tr:last-child td {
+  border-bottom: none;
+}
+
+.transactions-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.transactions-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Saving Mode Transaction Row Visual States */
+/* Credit: YELLOW */
+.tx-state-credit {
+  border-left: 4px solid var(--saving-credit) !important;
+}
+
+.tx-amount-credit {
+  color: var(--saving-credit);
+  font-weight: 700;
+}
+
+/* Normal Outgoing: GREEN */
+.tx-state-normal {
+  border-left: 4px solid var(--saving-normal) !important;
+}
+
+.tx-amount-normal {
+  color: var(--saving-normal);
+  font-weight: 700;
+}
+
+/* Over-limit Outgoing: RED */
+.tx-state-overlimit {
+  border-left: 4px solid var(--saving-overlimit) !important;
+  background-color: #fff5f5 !important;
+}
+
+.tx-amount-overlimit {
+  color: var(--saving-overlimit);
+  font-weight: 700;
+}
+
+.tx-desc {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.tx-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.tx-id-badge {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--bg-main);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+}
+
+.fraud-alert-banner {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--status-flagged-bg);
+  border: 1px solid #f43f5e;
+  border-radius: var(--radius-md);
+  color: #881337;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+}

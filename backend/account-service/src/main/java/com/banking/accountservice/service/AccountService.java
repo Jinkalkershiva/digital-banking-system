@@ -76,16 +76,47 @@ public class AccountService {
 
 
     /**
-     * block account - called by Fraud detection Service via kafka
+     * block account - called by Fraud detection Service via kafka or admin
      * @param accountNumber
      */
     public void blockAccount(String accountNumber){
         log.info("Blocking account: {}",accountNumber);
         Account account=accountRepository.findByAccountNumber(accountNumber)
-            .orElseThrow(()-> new RuntimeException("Account not found"));
+            .orElseThrow(()-> new RuntimeException("Account not found: " + accountNumber));
         account.setStatus(AccountStatus.BLOCKED);
         accountRepository.save(account);
         log.info("Account blocked: {}",accountNumber);
+    }
+
+    /**
+     * Unblock account - called by admin
+     * @param accountNumber
+     */
+    public void unblockAccount(String accountNumber){
+        log.info("Unblocking account: {}",accountNumber);
+        Account account=accountRepository.findByAccountNumber(accountNumber)
+            .orElseThrow(()-> new RuntimeException("Account not found: " + accountNumber));
+        account.setStatus(AccountStatus.ACTIVE);
+        accountRepository.save(account);
+        log.info("Account unblocked: {}",accountNumber);
+    }
+
+    /**
+     * Get all accounts (for Admin panel)
+     */
+    public java.util.List<AccountResponse> getAllAccounts() {
+        return accountRepository.findAll().stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+    /**
+     * Get account by user email
+     */
+    public AccountResponse getAccountByEmail(String email) {
+        Account account = accountRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("No account found for email: " + email));
+        return mapToResponse(account);
     }
 
     /**

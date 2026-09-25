@@ -12,12 +12,13 @@ public class RateLimitConfig {
 
     @Bean
     public KeyResolver keyResolver(){
-        return exchange -> Mono.just(
-                exchange.getRequest()
-                        .getRemoteAddress()
-                        .getAddress()
-                        .getHostAddress()
-        );
+        return exchange -> {
+            var remoteAddress = exchange.getRequest().getRemoteAddress();
+            String hostAddress = (remoteAddress != null && remoteAddress.getAddress() != null)
+                    ? remoteAddress.getAddress().getHostAddress()
+                    : "127.0.0.1";
+            return Mono.just(hostAddress);
+        };
     }
 
 

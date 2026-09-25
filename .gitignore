@@ -23,15 +23,24 @@
 hs_err_pid*
 replay_pid*
 
-# IntelliJ IDEA
+# Node / Frontend
+node_modules/
+dist/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IntelliJ IDEA & Editors
 .idea/
 *.iml
+.vscode/
 
 # Maven
 target/
 
-# VS Code
-.vscode/
+# Scratch & Temporary data
+scratch/
 
 # OS files
 .DS_Store

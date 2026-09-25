@@ -2,8 +2,14 @@ package com.banking.paymentservice.entity;
 
 public enum PaymentStatus {
     CREATED,
-    PENDING,
+    AUTHORIZED,
+    CAPTURED,
     COMPLETED,
+    PENDING,
+    PENDING_VERIFICATION,
     FAILED,
-    REFUNDED
+    REFUND_PENDING,
+    REFUNDED,
+    REFUND_FAILED
 }
+
